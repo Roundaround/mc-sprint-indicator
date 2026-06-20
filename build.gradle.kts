@@ -12,6 +12,12 @@ allay {
   issues.set("https://github.com/Roundaround/mc-sprint-indicator/issues")
   logoFile.set("assets/sprintindicator/banner.png")
 
+  gametest {
+    // Acknowledge the Minecraft EULA for the throwaway worlds the headless
+    // server game test spins up.
+    eula.set(true)
+  }
+
   modrinth {
     projectId.set("sprint-indicator")
   }
