@@ -4,8 +4,8 @@ import me.roundaround.allay.api.MixinEnv;
 import me.roundaround.sprintindicator.config.SprintIndicatorConfig;
 import me.roundaround.trove.config.value.Position;
 import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.Hud;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
@@ -22,8 +22,8 @@ import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @MixinEnv(MixinEnv.Env.CLIENT)
-@Mixin(Gui.class)
-public abstract class GuiMixin {
+@Mixin(Hud.class)
+public abstract class HudMixin {
   @Shadow
   private Player getCameraPlayer() {
     return null;
@@ -50,7 +50,7 @@ public abstract class GuiMixin {
     Position offset = config.offset.getValue();
     int x = (arm == HumanoidArm.LEFT ? (scaledWidth + 182) / 2 + 6 : (scaledWidth - 182) / 2 - 18 - 6) + offset.x();
     int y = scaledHeight - 20 + offset.y();
-    Identifier texture = Gui.getMobEffectSprite(crouching ? MobEffects.SLOWNESS : MobEffects.SPEED);
+    Identifier texture = Hud.getMobEffectSprite(crouching ? MobEffects.SLOWNESS : MobEffects.SPEED);
     context.blitSprite(RenderPipelines.GUI_TEXTURED, texture, x, y, 18, 18);
   }
 

@@ -9,8 +9,8 @@ import me.roundaround.trove.client.gui.widget.config.SubScreenControl;
 import me.roundaround.trove.client.gui.widget.drawable.LabelWidget;
 import me.roundaround.trove.config.option.PositionConfigOption;
 import me.roundaround.trove.config.value.Position;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.Hud;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.Holder;
@@ -27,7 +27,7 @@ import net.minecraft.world.item.ItemStack;
 // preview: a hotbar pinned to the bottom (the real one, with the player's items,
 // when editing from inside a world; an empty sample otherwise) with the indicator
 // icon drawn on top at the current offset, updating as you nudge or click-and-drag.
-// The geometry mirrors GuiMixin exactly (this.width/this.height
+// The geometry mirrors HudMixin exactly (this.width/this.height
 // are the same gui-scaled coordinates the HUD draws into), so it is pixel-faithful.
 // The controls keep their default bottom-right placement; the help text is pinned to
 // the top-left and the current offset value to the bottom-left, all clear of the
@@ -125,7 +125,7 @@ public final class SprintIndicatorOffsetScreen extends PositionEditScreen {
     super.placeHelpLabel(helpLabel);
   }
 
-  // Matches GuiMixin#afterRenderHotbar: anchored to the off-hand side of the
+  // Matches HudMixin#afterRenderHotbar: anchored to the off-hand side of the
   // hotbar, then shifted by the configured offset.
   private int indicatorX() {
     Position offset = this.getValue();
@@ -151,6 +151,6 @@ public final class SprintIndicatorOffsetScreen extends PositionEditScreen {
     Holder<MobEffect> effect = !config.sprintEnabled.getValue() && config.crouchEnabled.getValue()
         ? MobEffects.SLOWNESS
         : MobEffects.SPEED;
-    return Gui.getMobEffectSprite(effect);
+    return Hud.getMobEffectSprite(effect);
   }
 }

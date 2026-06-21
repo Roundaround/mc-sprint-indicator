@@ -8,7 +8,7 @@ import net.fabricmc.api.ClientModInitializer;
 public final class SprintIndicatorMod implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
-    // Load the config from disk so GuiMixin reads live values. The ModMenu
+    // Load the config from disk so HudMixin reads live values. The ModMenu
     // config screen is wired separately via SprintIndicatorModMenuIntegration.
     // Trove's Fabric core self-bootstraps via its own bundled entrypoint.
     SprintIndicatorConfig.INSTANCE.init();
