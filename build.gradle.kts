@@ -22,6 +22,10 @@ allay {
     projectId.set("sprint-indicator")
   }
 
+  curseforge {
+    projectId.set(1501609)
+  }
+
   release {
     versionType.set("release")
     sourcesJar.set(true)
