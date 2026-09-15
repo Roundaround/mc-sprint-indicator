@@ -58,7 +58,7 @@ public abstract class HudMixin {
       method = "extractItemHotbar", at = @At(
       value = "INVOKE",
       target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite" +
-               "(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"
+               "(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"
   ), index = 2, slice = @Slice(
       from = @At(
           value = "INVOKE",
@@ -76,7 +76,7 @@ public abstract class HudMixin {
       method = "extractItemHotbar", at = @At(
       value = "INVOKE",
       target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite" +
-               "(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIIIIII)V"
+               "(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIIIIII)V"
   ), index = 6, slice = @Slice(
       from = @At(
           value = "INVOKE",
