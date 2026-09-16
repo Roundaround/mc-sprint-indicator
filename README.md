@@ -1,37 +1,37 @@
 ![Sprint Indicator](https://imgur.com/11VunzQ.png)
 
-![](https://img.shields.io/badge/Loaders-Fabric%20|%20NeoForge%20|%20Forge-313e51?style=for-the-badge)
-![](https://img.shields.io/badge/MC-26.3%20|%2026.2%20|%2026.1%20|%201.21%20|%201.20%20|%201.19-313e51?style=for-the-badge)
-![](https://img.shields.io/badge/Side-Client-313e51?style=for-the-badge)
-
 [![Modrinth Downloads](https://img.shields.io/modrinth/dt/sprint-indicator?style=flat&logo=modrinth&color=00AF5C)](https://modrinth.com/mod/sprint-indicator)
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1501609?style=flat&logo=curseforge&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/sprint-indicator)
 [![GitHub Repo stars](https://img.shields.io/github/stars/Roundaround/mc-sprint-indicator?style=flat&logo=github)](https://github.com/Roundaround/mc-sprint-indicator)
 
 [![Support me on Ko-fi](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/donate/kofi-singular-alt_vector.svg)](https://ko-fi.com/roundaround)
 
----
+A small HUD icon showing whether you're sprinting — and now whether you're crouching too.
 
-Simple UI element showing whether you're currently sprinting - and now whether you're crouching too. Sprinting uses the
-built-in beacon speed-boost icon; crouching uses the built-in slowness icon.
+## Installing
 
-If you play with the left-handed or hotbar attack indicator options, the mod adjusts the UI accordingly so that
-everything fits together!
+Grab a build from [Modrinth](https://modrinth.com/mod/sprint-indicator) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/sprint-indicator). Fabric builds need [Fabric API](https://modrinth.com/mod/fabric-api).
 
-![](https://i.imgur.com/cgZvOzq.png)
+## Building from source
 
-## Configuration
+```sh
+./gradlew build
+```
 
-Open the settings from ModMenu (Fabric) or the **Config** button on the mods list (NeoForge / Forge). The configuration
-file is also directly editable from the `sprintindicator.toml` file in your config folder.
+Dev runs are per loader: `:fabric:runClient`, `:neoforge:runClient`, `:forge:runClient`, and the `runServer` equivalents. Game tests run with `./gradlew :fabric:runClientGameTests` and `:fabric:runServerGameTests`.
 
-`sprintEnabled`: `true|false` - Whether to show an icon when sprinting.
+The build is an [Allay](https://github.com/Roundaround/allay) consumer and bundles [Trove](https://github.com/Roundaround/trove).
 
-`crouchEnabled`: `true|false` - Whether to show an icon when crouching.
+Shared code lives in `common/` and is added to each loader subproject via `srcDir`.
 
-`offset`: `true|false` - An x,y pixel offset for rendering the icons.
+## Contributing
 
-`adjustAttackIndicator`: `true|false` - Whether to shift the attack indicator to put the sprint/crouch icons closer to
-the hotbar.
+Issues and pull requests are welcome at [the issue tracker](https://github.com/Roundaround/mc-sprint-indicator/issues).
 
-Made for the Minecraft streamer [Linkzzey](https://twitch.tv/linkzzey) over on Twitch!
+- Branch from `main`, which tracks the newest supported Minecraft version. Older lines live on their own version-named branches.
+- Keep loader-agnostic code in `common/`; only genuinely loader-specific glue belongs in a loader subproject.
+- Run `./gradlew build` plus the Fabric game tests before opening a PR, and add a changelog entry under `changelogs/` named for the version you're targeting.
+
+## License
+
+[MIT](LICENSE)
