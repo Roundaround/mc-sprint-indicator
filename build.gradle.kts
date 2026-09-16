@@ -29,6 +29,7 @@ allay {
   release {
     versionType.set("release")
     minecraftVersions("26.3")
+    environments("client")
     changelogDir.set(file("changelogs"))
   }
 }
