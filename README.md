@@ -27,9 +27,12 @@ file is also directly editable from the `sprintindicator.toml` file in your conf
 
 `sprintEnabled`: `true|false` - Whether to show an icon when sprinting.
 
+`sprintShowWhenActive`: `true|false` - Whether to also show the sprint icon (dimmed) while the sprint key is held or
+toggled on but you aren't sprinting.
+
 `crouchEnabled`: `true|false` - Whether to show an icon when crouching.
 
-`offset`: `true|false` - An x,y pixel offset for rendering the icons.
+`offset`: `x,y` - An x,y pixel offset for rendering the icons.
 
 `adjustAttackIndicator`: `true|false` - Whether to shift the attack indicator to put the sprint/crouch icons closer to
 the hotbar.
