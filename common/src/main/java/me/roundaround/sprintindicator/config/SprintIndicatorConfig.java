@@ -12,6 +12,7 @@ public final class SprintIndicatorConfig extends ModConfigImpl implements GameSc
 
   public final PositionConfigOption offset;
   public final BooleanConfigOption sprintEnabled;
+  public final BooleanConfigOption sprintShowWhenActive;
   public final BooleanConfigOption crouchEnabled;
   public final BooleanConfigOption adjustAttackIndicator;
 
@@ -21,6 +22,12 @@ public final class SprintIndicatorConfig extends ModConfigImpl implements GameSc
     this.sprintEnabled = BooleanConfigOption.builder(ConfigPath.of("sprintEnabled"))
         .setComment("Whether to show an icon when sprinting.")
         .setDefaultValue(true)
+        .build();
+
+    this.sprintShowWhenActive = BooleanConfigOption.builder(ConfigPath.of("sprintShowWhenActive"))
+        .setComment("Whether to also show the sprint icon (dimmed) while the sprint key is held or toggled on but you "
+            + "aren't sprinting.")
+        .setDefaultValue(false)
         .build();
 
     this.crouchEnabled = BooleanConfigOption.builder(ConfigPath.of("crouchEnabled"))
@@ -42,6 +49,7 @@ public final class SprintIndicatorConfig extends ModConfigImpl implements GameSc
   @Override
   protected void registerOptions() {
     this.register(this.sprintEnabled);
+    this.register(this.sprintShowWhenActive);
     this.register(this.crouchEnabled);
     this.register(this.offset);
     this.register(this.adjustAttackIndicator);

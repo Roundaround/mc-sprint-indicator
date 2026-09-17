@@ -24,6 +24,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @MixinEnv(MixinEnv.Env.CLIENT)
 @Mixin(Gui.class)
 public abstract class GuiMixin {
+  @Unique
+  private static final float ARMED_ALPHA = 0.7f;
+
   @Shadow
   private Player getCameraPlayer() {
     return null;
@@ -38,8 +41,10 @@ public abstract class GuiMixin {
 
     SprintIndicatorConfig config = SprintIndicatorConfig.INSTANCE;
     boolean sprinting = config.sprintEnabled.getValue() && player.isSprinting();
+    boolean armed = !sprinting && config.sprintEnabled.getValue() && config.sprintShowWhenActive.getValue() &&
+                    player.input.keyPresses.sprint();
     boolean crouching = config.crouchEnabled.getValue() && player.isCrouching();
-    if (!sprinting && !crouching) {
+    if (!sprinting && !armed && !crouching) {
       return;
     }
 
@@ -51,7 +56,8 @@ public abstract class GuiMixin {
     int x = (arm == HumanoidArm.LEFT ? (scaledWidth + 182) / 2 + 6 : (scaledWidth - 182) / 2 - 18 - 6) + offset.x();
     int y = scaledHeight - 20 + offset.y();
     Identifier texture = Gui.getMobEffectSprite(crouching ? MobEffects.SLOWNESS : MobEffects.SPEED);
-    context.blitSprite(RenderPipelines.GUI_TEXTURED, texture, x, y, 18, 18);
+    float alpha = crouching || sprinting ? 1f : ARMED_ALPHA;
+    context.blitSprite(RenderPipelines.GUI_TEXTURED, texture, x, y, 18, 18, alpha);
   }
 
   @ModifyArg(
