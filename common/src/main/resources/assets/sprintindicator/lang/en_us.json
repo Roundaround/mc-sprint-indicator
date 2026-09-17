@@ -1,6 +1,7 @@
 {
   "sprintindicator.config.title": "Sprint Indicator — Settings",
   "sprintindicator.sprintEnabled.label": "Show sprint indicator",
+  "sprintindicator.sprintShowWhenActive.label": "Show when sprint key is active",
   "sprintindicator.crouchEnabled.label": "Show crouch indicator",
   "sprintindicator.offset.label": "Icon offset",
   "sprintindicator.offset.title": "Icon offset",
