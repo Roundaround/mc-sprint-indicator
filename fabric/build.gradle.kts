@@ -13,6 +13,10 @@ allay {
       optional("modmenu")
     }
   }
+
+  release {
+    loaders.set(listOf("fabric", "quilt"))
+  }
 }
 
 dependencies {
